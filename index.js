@@ -3,17 +3,34 @@ import cors from 'cors'
 
 const app = express()
 app.use(cors()) 
+app.use(express.json())
+
+const usersArray =[]
 
 
+app.post('/sign-up', (req, res) => {
+	const {username, avatar} = req.body
+	usersArray.push(req.body)
+	console.log(usersArray)
+	res.send("OK")
+
+})
 
 app.get('/tweets', (req, res)=>{
     res.send(tweetArray)
 })
 
+app.post('/tweets', (req, res) => {
+	const {username, tweet} = req.body
+	tweetArray.push(req.body)
+	res.send(tweetArray)
+
+})
 
 
 
-app.listen(5000)
+
+
 
 const tweetArray = [
 	{
@@ -22,26 +39,29 @@ const tweetArray = [
 		  tweet: "eu amo o hub"
 	},
     {
-		username: "bobesponja",
+		username: "tururu",
 			avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info",
 		  tweet: "eu amo o hub"
 	},
     {
-		username: "bobesponja",
+		username: "siricascuco",
 			avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info",
 		  tweet: "eu amo o hub"
 	},
     {
-		username: "bobesponja",
+		username: "sandy",
 			avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info",
 		  tweet: "eu amo o hub"
 	},
     {
-		username: "bobesponja",
+		username: "piratao",
 			avatar: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=70&strip=info",
 		  tweet: "eu amo o hub"
     	}
 ]
+
+app.listen(5000)
+
 
 // USUARIO:
 // {
