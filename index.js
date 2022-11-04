@@ -7,15 +7,21 @@ app.use(express.json());
 
 const usersArray = [];
 
+
 app.post("/sign-up", (req, res) => {
   const { username, avatar } = req.body;
   usersArray.push(req.body);
   res.send("OK");
 });
 
+
 app.get("/tweets", (req, res) => {
-  res.send(tweetArray);
+
+  let lastTweets= tweetArray.slice(-10)
+  res.send(lastTweets);
+
 });
+
 
 app.post("/tweets", (req, res) => {
   const { username, tweet } = req.body;
@@ -29,6 +35,7 @@ app.post("/tweets", (req, res) => {
 
   res.send("OK");
 });
+
 
 const tweetArray = [
   {
