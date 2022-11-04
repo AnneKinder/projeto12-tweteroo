@@ -22,7 +22,14 @@ app.get('/tweets', (req, res)=>{
 
 app.post('/tweets', (req, res) => {
 	const {username, tweet} = req.body
-	tweetArray.push(req.body)
+	let tweetBody ={
+		username: username,
+		avatar: usersArray[usersArray.length-1].avatar,
+		tweet:tweet
+	}
+
+	tweetArray.push(tweetBody)
+
 	res.send(tweetArray)
 
 })
